@@ -1,7 +1,10 @@
 const express = require('express')
+const router = express.Router();
+
 const controller = require('../controllers/customerController')
 
-const router = express.Router();
+ 
 router.get('/', controller.listar)
-
+router.post('/add', controller.guardar)
+ 
 module.exports = router;

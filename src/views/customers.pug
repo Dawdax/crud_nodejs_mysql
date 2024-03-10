@@ -1,10 +1,33 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="/css/app.css")
-        title Document
-    body 
-    h2.text-slate-400.text-lg hola chamaco  
-    p2(class="mx-10") aaaaa
+extends partials/_header
+
+block contenido
+    div(class="grid grid-cols-6")
+        div(class="col-span-4 max-w-full")
+            table(class="table-auto")
+                thead 
+                    tr  
+                        th Id   
+                        th Nombre 
+                        th Dirección 
+                        th Télefono 
+                        th Funciones
+                tbody 
+                    if data
+                        each customer in data 
+                            tr 
+                                td= customer.id
+                                td= customer.nombre
+                                td= customer.direccion
+                                td= customer.telefono
+                                td Funciones                      
+                    
+        div(class="col-span-2 gap-3")
+            form(method="POST" action="/add" noValidate  class="space-y-5 border rounded-md border-gray-300 px-4 py-5 drop-shadow-sm")
+                div 
+                    input(id="nombre" placeholder="Nombre" type="text" name="nombre" class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 text-center")
+                div 
+                    input(id="direccion" placeholder="Dirección" type="text" name="direccion" class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 text-center")
+                div 
+                    input(id="telefono" placeholder="Télefono" type="text" name="telefono" class="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 text-center")
+                div 
+                    input(class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 cursor-pointer" type="submit", value="Guardar")  
